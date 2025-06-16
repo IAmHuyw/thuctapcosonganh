@@ -1,105 +1,105 @@
-﻿use master
+use master
 go
 create database QLyDonHang
 go
 use QLyDonHang
 go
 
-Create table KHACH_HANG (
-	Ma_KH Char(10) NOT NULL,
-	Ho_Ten Nvarchar(40) NULL,
-	Dia_Chi Nvarchar(30) NULL,
-	SDT Char(15) NULL,
-Primary Key  (Ma_KH)
+Create table [KHACH_HANG] (
+	[Ma_KH] Char(10) NOT NULL,
+	[Ho_Ten] Nvarchar(40) NULL,
+	[Dia_Chi] Nvarchar(30) NULL,
+	[SDT] Char(15) NULL,
+Primary Key  ([Ma_KH])
 ) 
 
-Create table QUAN_LY (
-	Ma_QL Char(10) NOT NULL,
-	Ho_Ten Nvarchar(40) NULL,
-	SDT Char(15) NULL,
-Primary Key  (Ma_QL)
+Create table [QUAN_LY] (
+	[Ma_QL] Char(10) NOT NULL,
+	[Ho_Ten] Nvarchar(40) NULL,
+	[SDT] Char(15) NULL,
+Primary Key  ([Ma_QL])
 ) 
 
-Create table DON_HANG (
-	Ma_DH Char(10) NOT NULL,
-	Ma_KH Char(10) NOT NULL,
-	Ngay_Dat Datetime NULL,
-	Trang_Thai Nvarchar(30) NULL,
-Primary Key  (Ma_DH)
+Create table [DON_HANG] (
+	[Ma_DH] Char(10) NOT NULL,
+	[Ma_KH] Char(10) NOT NULL,
+	[Ngay_Dat] Datetime NULL,
+	[Trang_Thai] Nvarchar(30) NULL,
+Primary Key  ([Ma_DH])
 ) 
 
-Create table SAN_PHAM (
-	Ma_SP Char(10) NOT NULL,
-	Ten_SP Nvarchar(40) NULL,
-	Don_Gia Money NULL,
-	Mo_Ta Nvarchar(50) NULL,
-	Tinh_Trang Nvarchar(30) NULL,
-	So_Luong Integer NULL,
-Primary Key  (Ma_SP)
+Create table [SAN_PHAM] (
+	[Ma_SP] Char(10) NOT NULL,
+	[Ten_SP] Nvarchar(40) NULL,
+	[Don_Gia] Money NULL,
+	[Mo_Ta] Nvarchar(50) NULL,
+	[Tinh_Trang] Nvarchar(30) NULL,
+	[So_Luong] Integer NULL,
+Primary Key  ([Ma_SP])
 ) 
 
-Create table CHI_TIET_DON_HANG (
-	Ma_DH Char(10) NOT NULL,
-	Ma_SP Char(10) NOT NULL,
-	So_Luong Integer NULL,
-	Don_Gia Money NULL,
-Primary Key  (Ma_DH,Ma_SP)
+Create table [CHI_TIET_DON_HANG] (
+	[Ma_DH] Char(10) NOT NULL,
+	[Ma_SP] Char(10) NOT NULL,
+	[So_Luong] Integer NULL,
+	[Don_Gia] Money NULL,
+Primary Key  ([Ma_DH],[Ma_SP])
 ) 
 
-Create table QUAN_LY_DON_HANG (
-	Ma_DH Char(10) NOT NULL,
-	Ma_QL Char(10) NOT NULL,
-	Xu_Ly_Don_Hang Nvarchar(30) NULL,
-Primary Key  (Ma_DH,Ma_QL)
+Create table [QUAN_LY_DON_HANG] (
+	[Ma_DH] Char(10) NOT NULL,
+	[Ma_QL] Char(10) NOT NULL,
+	[Xu_Ly_Don_Hang] Nvarchar(30) NULL,
+Primary Key  ([Ma_DH],[Ma_QL])
 ) 
 
-Create table THANH_TOAN (
-	Ma_HD Char(10) NOT NULL,
-	Ngay_Thanh_Toan Datetime NULL,
-	So_Tien Money NULL,
-	Phuong_Thuc Nvarchar(30) NULL,
-	Trang_Thai_TT Nvarchar(30) NULL,
-	Ma_DH Char(10) NOT NULL,
-Primary Key  (Ma_HD)
+Create table [THANH_TOAN] (
+	[Ma_HD] Char(10) NOT NULL,
+	[Ngay_Thanh_Toan] Datetime NULL,
+	[So_Tien] Money NULL,
+	[Phuong_Thuc] Nvarchar(30) NULL,
+	[Trang_Thai_TT] Nvarchar(30) NULL,
+	[Ma_DH] Char(10) NOT NULL,
+Primary Key  ([Ma_HD])
 ) 
 
-Create table GIAO_HANG (
-	Ma_GH Char(10) NOT NULL,
-	Ngay_Giao Datetime NULL,
-	Trang_Thai Nvarchar(30) NULL,
-	Nguoi_GIao Nvarchar(40) NULL,
-	Ma_DH Char(10) NOT NULL,
-Primary Key  (Ma_GH)
+Create table [GIAO_HANG] (
+	[Ma_GH] Char(10) NOT NULL,
+	[Ngay_Giao] Datetime NULL,
+	[Trang_Thai] Nvarchar(30) NULL,
+	[Nguoi_GIao] Nvarchar(40) NULL,
+	[Ma_DH] Char(10) NOT NULL,
+Primary Key  ([Ma_GH])
 ) 
 
-Create table TAI_KHOAN (
-	Ma_TK Char(10) NOT NULL,
-	Ten_Dang_Nhap Nvarchar(40) NULL,
-	Mat_Khau Nchar(20) NULL,
-	Ma_QL Char(10) NULL,
-	Loai_TK Nvarchar(15) NULL,
-	Ma_KH Char(10) NULL,
-Primary Key  (Ma_TK)  
+Create table [TAI_KHOAN] (
+	[Ma_TK] Char(10) NOT NULL,
+	[Ten_Dang_Nhap] Nvarchar(40) NULL,
+	[Mat_Khau] Nchar(20) NULL,
+	[Ma_QL] Char(10) NULL,
+	[Loai_TK] Nvarchar(15) NULL,
+	[Ma_KH] Char(10) NULL,
+Primary Key  ([Ma_TK])  
 ) 
 
 
-Alter table DON_HANG add  foreign key(Ma_KH) references KHACH_HANG (Ma_KH) 
+Alter table [DON_HANG] add  foreign key([Ma_KH]) references [KHACH_HANG] ([Ma_KH]) 
 go
-Alter table TAI_KHOAN add  foreign key(Ma_KH) references KHACH_HANG (Ma_KH) 
+Alter table [TAI_KHOAN] add  foreign key([Ma_KH]) references [KHACH_HANG] ([Ma_KH]) 
 go
-Alter table QUAN_LY_DON_HANG add  foreign key(Ma_QL) references QUAN_LY (Ma_QL) 
+Alter table [QUAN_LY_DON_HANG] add  foreign key([Ma_QL]) references [QUAN_LY] ([Ma_QL]) 
 go
-Alter table TAI_KHOAN add  foreign key(Ma_QL) references QUAN_LY (Ma_QL) 
+Alter table [TAI_KHOAN] add  foreign key([Ma_QL]) references [QUAN_LY] ([Ma_QL]) 
 go
-Alter table CHI_TIET_DON_HANG add  foreign key(Ma_DH) references DON_HANG (Ma_DH) 
+Alter table [CHI_TIET_DON_HANG] add  foreign key([Ma_DH]) references [DON_HANG] ([Ma_DH]) 
 go
-Alter table QUAN_LY_DON_HANG add  foreign key(Ma_DH) references DON_HANG (Ma_DH) 
+Alter table [QUAN_LY_DON_HANG] add  foreign key([Ma_DH]) references [DON_HANG] ([Ma_DH]) 
 go
-Alter table THANH_TOAN add  foreign key(Ma_DH) references DON_HANG (Ma_DH) 
+Alter table [THANH_TOAN] add  foreign key([Ma_DH]) references [DON_HANG] ([Ma_DH]) 
 go
-Alter table GIAO_HANG add  foreign key(Ma_DH) references DON_HANG (Ma_DH) 
+Alter table [GIAO_HANG] add  foreign key([Ma_DH]) references [DON_HANG] ([Ma_DH]) 
 go
-Alter table CHI_TIET_DON_HANG add  foreign key(Ma_SP) references SAN_PHAM (Ma_SP) 
+Alter table [CHI_TIET_DON_HANG] add  foreign key([Ma_SP]) references [SAN_PHAM] ([Ma_SP]) 
 go
 ALTER TABLE TAI_KHOAN
 ADD CONSTRAINT CK_TAI_KHOAN_Loai_TK
@@ -450,38 +450,6 @@ WHERE tt.Trang_Thai_TT = N'HOÀN THÀNH'
 GROUP BY kh.Ma_KH, kh.Ho_Ten
 ORDER BY TongChiTieu DESC;
 
--- Kiểm tra khách hàng trùng
-CREATE PROCEDURE sp_KiemTraKhachHangTrung
-    @SDT VARCHAR(15),
-    @Email VARCHAR(50) = NULL
-AS
-BEGIN
-    SELECT 
-        Ma_KH, 
-        Ho_Ten, 
-        SDT, 
-        Dia_Chi
-    FROM 
-        KHACH_HANG
-    WHERE 
-        SDT = @SDT
-        OR (@Email IS NOT NULL AND Email = @Email);
-END
-
--- Kiểm tra sản phẩm trùng
-CREATE PROCEDURE sp_KiemTraSanPhamTrung
-    @TenSP NVARCHAR(40)
-AS
-BEGIN
-    SELECT 
-        Ma_SP, 
-        Ten_SP, 
-        Don_Gia
-    FROM 
-        SAN_PHAM
-    WHERE 
-        Ten_SP = @TenSP;
-END
 
 
 --Ðang ký tài khoản
@@ -1477,13 +1445,36 @@ END
 
 -- Tính tổng doanh thu theo tháng
 CREATE PROCEDURE sp_TongDoanhThuTheoThang
-    @Nam INT = YEAR(GETDATE())
+    @Nam INT = NULL
 AS
 BEGIN
+    SET NOCOUNT ON;
+    
+    -- Nếu không chỉ định năm, lấy năm hiện tại
+    IF @Nam IS NULL
+        SET @Nam = YEAR(GETDATE());
+    
+    -- Kiểm tra xem có dữ liệu cho năm được chọn không
+    IF NOT EXISTS (
+        SELECT 1 
+        FROM DON_HANG dh
+        JOIN THANH_TOAN tt ON dh.Ma_DH = tt.Ma_DH
+        WHERE YEAR(dh.Ngay_Dat) = @Nam
+        AND tt.Trang_Thai_TT = N'HOÀN THÀNH'
+    )
+    BEGIN
+        SELECT 
+            'Thông báo' AS Loai,
+            CONCAT('Không có dữ liệu doanh thu cho năm ', @Nam) AS NoiDung;
+        RETURN;
+    END
+    
+    -- Truy vấn chính
     SELECT 
         MONTH(dh.Ngay_Dat) AS Thang,
-        SUM(tt.So_Tien) AS TongDoanhThu,
-        COUNT(DISTINCT dh.Ma_DH) AS SoDonHang
+        FORMAT(SUM(tt.So_Tien), 'N0') AS TongDoanhThu,
+        COUNT(DISTINCT dh.Ma_DH) AS SoDonHang,
+        FORMAT(SUM(tt.So_Tien) / COUNT(DISTINCT dh.Ma_DH), 'N0') AS TrungBinhDonHang
     FROM 
         DON_HANG dh
         JOIN THANH_TOAN tt ON dh.Ma_DH = tt.Ma_DH
@@ -1521,8 +1512,7 @@ END
 
 -- Kiểm tra khách hàng trùng
 CREATE PROCEDURE sp_KiemTraKhachHangTrung
-    @SDT VARCHAR(15),
-    @Email VARCHAR(50) = NULL
+    @SDT VARCHAR(15)
 AS
 BEGIN
     SELECT 
@@ -1534,7 +1524,6 @@ BEGIN
         KHACH_HANG
     WHERE 
         SDT = @SDT
-        OR (@Email IS NOT NULL AND Email = @Email);
 END
 
 -- Kiểm tra sản phẩm trùng
@@ -1552,6 +1541,7 @@ BEGIN
         Ten_SP = @TenSP;
 END
 
+
 -----
 -- Tạo role cho từng loại người dùng
 CREATE ROLE db_khachhang;
@@ -1568,11 +1558,27 @@ GRANT EXECUTE ON sp_DangKyTaiKhoan TO db_khachhang;
 GRANT EXECUTE ON sp_DangNhap TO db_khachhang;
 
 -- Cấp quyền cho quản trị
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES TO db_quantri;
-GRANT EXECUTE ON ALL PROCEDURES TO db_quantri;
+-- Cách 1: Cấp quyền cho từng bảng riêng biệt (khuyến nghị)
+GRANT SELECT ON KHACH_HANG TO db_quantri;
+GRANT SELECT ON QUAN_LY TO db_quantri;
+GRANT SELECT ON DON_HANG TO db_quantri;
+GRANT SELECT ON SAN_PHAM TO db_quantri;
+GRANT SELECT ON CHI_TIET_DON_HANG TO db_quantri;
+GRANT SELECT ON QUAN_LY_DON_HANG TO db_quantri;
+GRANT SELECT ON THANH_TOAN TO db_quantri;
+GRANT SELECT ON GIAO_HANG TO db_quantri;
+GRANT SELECT ON TAI_KHOAN TO db_quantri;
 
 -- Cấp quyền cho báo cáo
-GRANT SELECT ON ALL TABLES TO db_baocao;
+-- 1. Cấp quyền SELECT cho từng bảng cụ thể
+GRANT SELECT ON KHACH_HANG TO db_baocao;
+GRANT SELECT ON DON_HANG TO db_baocao;
+GRANT SELECT ON SAN_PHAM TO db_baocao;
+GRANT SELECT ON CHI_TIET_DON_HANG TO db_baocao;
+GRANT SELECT ON THANH_TOAN TO db_baocao;
+GRANT SELECT ON GIAO_HANG TO db_baocao;
+
+-- 2. Cấp quyền thực thi stored procedure
 GRANT EXECUTE ON sp_ThongKeDonHangTheoTrangThai TO db_baocao;
 GRANT EXECUTE ON sp_ThongKeSanPhamTheoTinhTrang TO db_baocao;
 GRANT EXECUTE ON sp_TongDoanhThuTheoThang TO db_baocao;
@@ -1601,25 +1607,3 @@ ALTER ROLE db_baocao ADD MEMBER user_baocao;
 CREATE LOGIN login_giaohang WITH PASSWORD = 'giaohang@123';
 CREATE USER user_giaohang FOR LOGIN login_giaohang;
 ALTER ROLE db_giaohang ADD MEMBER user_giaohang;
-
--- Ví dụ stored procedure sử dụng tham số hóa
-CREATE PROCEDURE sp_DangNhap
-    @Ma_TK CHAR(10),
-    @Ten_Dang_Nhap NVARCHAR(40),
-    @Mat_Khau NCHAR(20)
-AS
-BEGIN
-    -- Kiểm tra tài khoản với tham số hóa
-    IF NOT EXISTS (
-        SELECT 1 
-        FROM TAI_KHOAN 
-        WHERE Ma_TK = @Ma_TK 
-        AND Ten_Dang_Nhap = @Ten_Dang_Nhap
-        AND Mat_Khau = @Mat_Khau
-    )
-    BEGIN
-        RAISERROR('Thông tin đăng nhập không chính xác', 16, 1)
-        RETURN
-    END
-    -- Xử lý đăng nhập thành công
-END
